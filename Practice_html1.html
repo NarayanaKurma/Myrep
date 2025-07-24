@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prctice</title>
+    <style>
+        #demo {
+            
+            margin: 20px 200px;
+            text-align: center;
+
+        }
+
+       
+            
+        }
+
+        .disable {
+            background-color: yellow;
+            pointer-events: none
+        }
+
+        .forms {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 500px;
+            
+
+        }
+        .inp{
+            background-color: rgb(57, 118, 98);
+            justify-content: center;
+        }
+        #button{
+            background-color: rgb(70, 70, 146);
+        }
+    </style>
+</head>
+
+<body style="background-image: url('images.png'); image-resolution: 100%; background-repeat: no-repeat; background-size: 100%; background-color: rgb(92, 62, 62);">
+    <div class="forms">
+        <b>Name:</b> <input id="name" calss="inp" type="text" required /><br>
+        <b>weight:</b> <input id="weight" calss="inp" type=number required /><br>
+        <b>height:</b> <input id="height"  calss="inp" type=number required /><br><br>
+        <button id="button">Check Your BMI</button>
+
+    </div>
+    
+    <p id="demo">Click on button to check your BMI Index </p>
+
+    <script>
+
+        //const name =  prompt("What is you name?");
+
+        //const weight = prompt("What is your weight");
+        // const height =prompt('height in mt');
+
+        //console.log(BMI)
+        //console.log(`Hi ${name}, your BMI index is ${BMI}`);
+       
+        document.getElementById("button").addEventListener("click", ()=> {
+            const name = document.getElementById("name").value;
+            //console.log(name)
+            const weight = +document.getElementById("weight").value;
+            //console.log(weight)
+            //console.log(typeof weight)
+
+            const hight = +document.getElementById("height").value;
+            //console.log(typeof hight)
+            const dis = document.getElementById("demo");
+            const height = (hight / 100)
+            //console.log(weight)
+            let BMI
+            BMI = (weight / (height ** 2));
+            if (BMI < 18) {
+                console.log(`${name} your Lean 🤭and BMI is ${BMI}`);
+                console.log(name)
+
+                dis.innerHTML = `${name}  your Lean 😛and BMI is ${BMI}`
+                resetoptions()
+            } else if (BMI >= 18 && BMI < 25) {
+                dis.innerHTML = `${name} is Normal 👌and BMI is ${BMI}`
+                console.log(`${name} your Normal`)
+                resetoptions()
+            } else if(BMI>=25){
+                dis.innerHTML = `${name} is Fat 😛and BMI is ${BMI}`
+                console.log(`${name} your Fat`)
+                resetoptions()
+            } else if(NaN || 1){
+                dis.innerHTML=`Inavalid input`
+            }
+            console.log(`Hi ${name}, your BMI index is ${BMI}`);
+        }
+        
+    );
+    
+ const resetoptions = function(){
+            document.getElementById("name").value = " ";
+            document.getElementById("weight").value= " ";
+            document.getElementById("height").value= " ";
+        }
+    </script>
+
+</body>
+
+</html>
